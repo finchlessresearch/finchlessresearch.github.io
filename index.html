@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finchless Research // Precision Intelligence Engineering</title>
+    <!-- Tailwind CSS for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter for clean, modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to complement Tailwind and achieve the futuristic aesthetic */
+        :root {
+            --bg-dark: #05070A;
+            --bg-med: #0A0C10;
+            --border-color: rgba(68, 255, 224, 0.15);
+            --accent: #44FFE0; /* Existing accent color */
+            --text-primary: #E0E6F1;
+            --text-secondary: #8492A6;
+            --card-bg: rgba(10, 12, 16, 0.5);
+
+            /* New accent colors from the logo */
+            --logo-green: #3D5B54; /* Dark green from the logo */
+            --logo-gold: #D4AF37; /* Gold from the logo */
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        /* Animated gradient background for a subtle, dynamic feel */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 10% 20%, rgba(68, 255, 224, 0.05), transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(68, 255, 224, 0.05), transparent 40%);
+            animation: pulse-glow 15s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        /* Glassmorphism effect for cards with a subtle border */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 30px rgba(68, 255, 224, 0.1);
+            border-color: rgba(68, 255, 224, 0.3);
+        }
+        /* Custom styling for section headers */
+        .section-header {
+            color: var(--logo-green); /* Use the logo's green color */
+            border-left: 3px solid var(--logo-green);
+            padding-left: 1rem;
+        }
+        /* Entrance animations for elements */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Staggered animations for grid items */
+        .grid .glass-card {
+            animation-delay: calc(var(--i, 0) * 100ms);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- The dynamic gradient background -->
+    <div class="gradient-bg"></div>
+    <!-- Particle effect canvas -->
+    <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full z-[-1] opacity-20"></canvas>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <!-- Header Section -->
+        <header class="flex flex-col sm:flex-row items-center justify-between mb-16 md:mb-24 border-b border-gray-800 pb-6 fade-in-up">
+            <div class="flex items-center gap-4">
+                <!-- Using the provided logo -->
+                <img src="https://i.imgur.com/3y0kE0b.png" alt="Finchless Logo" class="h-14 w-14 filter drop-shadow(0 0 8px rgba(68,255,224,0.5))" />
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-white">Finchless Research</h1>
+                    <p class="text-sm md:text-base text-gray-400">Precision Intelligence Engineering</p>
+                </div>
+            </div>
+            <nav class="mt-4 sm:mt-0">
+                 <a href="mailto:hello@finchlessresearch.org" class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300">hello@finchlessresearch.org</a>
+            </nav>
+        </header>
+        <!-- Hero Section with Birdcage Image -->
+        <section class="mb-16 md:mb-24 fade-in-up" style="animation-delay: 100ms;">
+            <div class="relative bg-cover bg-center h-[300px] md:h-[400px] lg:h-[500px]" style="background-image: url('https://i.imgur.com/example_birdcage.jpg');">
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+                <div class="relative p-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Unlocking Intelligence, Unleashing Potential</h2>
+                    <p class="text-xl text-gray-300">Transform your operations with precision-engineered solutions.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Overview Section -->
+        <section class="mb-16 md:mb-24 fade-in-up" style="animation-delay: 200ms;">
+            <h2 class="text-xl md:text-2xl font-semibold mb-6 section-header">Overview</h2>
+            <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
+                Finchless Research specialises in advanced threat intelligence and bespoke consultations. We engineer modular, AI-augmented systems that bridge the operational void between surface collection and adversarial simulation with unmatched precision and velocity.
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                <li>Adversarial simulation & red-team cognition analysis</li>
+                <li>Automated OSINT pipelines enhanced with NLP and LLMs</li>
+                <li>Darknet exploration via stealth-optimised crawlers with forensic retention</li>
+            </ul>
+        </section>
+        <!-- Case Studies Section -->
+        <section class="mb-16 md:mb-24 fade-in-up" style="animation-delay: 300ms;">
+            <h2 class="text-xl md:text-2xl font-semibold mb-8 section-header">Core Capabilities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Card 1: GHOSTCLR -->
+                <div class="glass-card p-6 rounded-lg fade-in-up" style="--i: 1;">
+                    <h3 class="text-lg font-bold text-white mb-2">GHOSTCLR</h3>
+                    <p class="text-sm text-gray-400 mb-4">Real-time OSINT ingestion and enrichment system using NLP and LLM augmentation.</p>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Key Features</div>
+                    <ul class="text-sm text-gray-300 mt-2 space-y-1">
+                       <li>&#x25B8; Toggle LLMs at runtime</li>
+                       <li>&#x25B8; Swap NLP models dynamically</li>
+                       <li>&#x25B8; Async ingestion with live logs</li>
+                    </ul>
+                </div>
+                <!-- Card 2: VEILFRAME -->
+                <div class="glass-card p-6 rounded-lg fade-in-up" style="--i: 2;">
+                    <h3 class="text-lg font-bold text-white mb-2">VEILFRAME</h3>
+                    <p class="text-sm text-gray-400 mb-4">Stealth dark web crawler using entropy-based genetic mutation and forensic tracing.</p>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Key Features</div>
+                    <ul class="text-sm text-gray-300 mt-2 space-y-1">
+                       <li>&#x25B8; Stateful seed logic</li>
+                       <li>&#x25B8; Pluggable transport validation</li>
+                       <li>&#x25B8; Anomaly-snapshot logging</li>
+                    </ul>
+                </div>
+                <!-- Card 3: STRIKEMIND -->
+                <div class="glass-card p-6 rounded-lg fade-in-up" style="--i: 3;">
+                    <h3 class="text-lg font-bold text-white mb-2">STRIKEMIND</h3>
+                    <p class="text-sm text-gray-400 mb-4">Adversarial emulation framework with AI-based kill-chain prediction.</p>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Key Features</div>
+                    <ul class="text-sm text-gray-300 mt-2 space-y-1">
+                       <li>&#x25B8; Live red-team simulation</li>
+                       <li>&#x25B8; Defender cognitive gap detection</li>
+                       <li>&#x25B8; Exploit synthesis & feedback</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Strategic Model Section -->
+        <section class="mb-16 md:mb-24 fade-in-up" style="animation-delay: 400ms;">
+            <h2 class="text-xl md:text-2xl font-semibold mb-6 section-header">Integrated Strategic Model</h2>
+            <div class="glass-card rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Our tri-core escalation loop enables a seamless flow from passive collection to active adversarial deployment.</p>
+                 <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4 text-center">
+                    <div class="flex-1">
+                        <div class="text-accent font-bold text-lg">1. GHOSTCLR</div>
+                        <div class="text-gray-400 text-sm">Passive OSINT Ingestion</div>
+                    </div>
+                    <div class="text-accent text-2xl font-thin">&rarr;</div>
+                    <div class="flex-1">
+                        <div class="text-accent font-bold text-lg">2. VEILFRAME</div>
+                        <div class="text-gray-400 text-sm">Darknet Discovery</div>
+                    </div>
+                    <div class="text-accent text-2xl font-thin">&rarr;</div>
+                    <div class="flex-1">
+                        <div class="text-accent font-bold text-lg">3. STRIKEMIND</div>
+                        <div class="text-gray-400 text-sm">Adversarial Simulation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section class="text-center fade-in-up" style="animation-delay: 500ms;">
+            <h2 class="text-xl md:text-2xl font-semibold mb-4 section-header inline-block">Engage With Us</h2>
+            <p class="max-w-2xl mx-auto text-gray-400 mb-6">We welcome operational briefings, collaboration requests, and strategic inquiries. Reach out to begin a confidential discussion.</p>
+            <a href="mailto:hello@finchlessresearch.org" 
+               class="inline-block bg-accent text-bg-dark font-bold py-3 px-8 rounded-md hover:bg-white hover:text-bg-dark transition-all duration-300 transform hover:scale-105 shadow-lg shadow-accent/20">
+               Contact Operations
+            </a>
+        </section>
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 mt-24 md:mt-32 text-sm fade-in-up" style="animation-delay: 600ms;">
+            <p>&copy; 2024 Finchless Research. All rights reserved. // Domain: finchlessresearch.org</p>
+        </footer>
+    </div>
+    <script>
+        // --- Interactive Particle Background Script ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 75;
+        const maxVelocity = 0.3;
+        const connectDistance = 120;
+        const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * maxVelocity;
+                this.vy = (Math.random() - 0.5) * maxVelocity;
+                this.radius = Math.random() * 1.5 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = accentColor;
+                ctx.fill();
+            }
+        }
+        function init() {
+            resizeCanvas();
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < connectDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(68, 255, 224, ${1 - distance / connectDistance})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', init);
+        // Initialize and start the animation
+        init();
+        animate();
+    </script>
+</body>
+</html>
